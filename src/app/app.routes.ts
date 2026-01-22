@@ -8,9 +8,12 @@ import { TareasComponent } from './pages/tareas/tareas';
 import { SabiduriaComponent } from './pages/sabiduria/sabiduria';
 import { AcontecimientosComponent } from './pages/acontecimientos/acontecimientos';
 import { ActualidadComponent } from './pages/actualidad/actualidad';
+import { ColumnistasComponent } from './pages/columnistas/columnistas';
+import { AdminComponent } from './pages/admin/admin';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'columnistas', component: ColumnistasComponent },
     { path: 'reflexiones', component: ReflexionesComponent },
     { path: 'clima', component: ClimaComponent },
     { path: 'consejos', component: ConsejosComponent },
@@ -19,5 +22,6 @@ export const routes: Routes = [
     { path: 'sabiduria', component: SabiduriaComponent },
     { path: 'acontecimientos', component: AcontecimientosComponent },
     { path: 'actualidad', component: ActualidadComponent },
+    { path: 'admin', component: AdminComponent },
     { path: '**', redirectTo: '' }
 ];

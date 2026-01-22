@@ -1,49 +1,24 @@
-<nav class="sticky top-0 z-50 bg-brand-paper/80 backdrop-blur-md border-b border-brand-gold/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
+<nav class="bg-brand-paper/80 backdrop-blur-md sticky top-0 z-50 border-b border-brand-slate/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between h-20 items-center">
             <div class="flex-shrink-0 flex items-center">
-                <a routerLink="/" class="text-2xl font-serif font-bold text-brand-slate tracking-tight">
-                    Almanaque <span class="text-brand-gold italic text-xl">Franklin</span>
+                <a routerLink="/" class="text-xl font-serif font-bold text-brand-slate uppercase tracking-[0.2em]">
+                    El Faro <span class="text-brand-emerald">del Siglo</span>
                 </a>
             </div>
-            <div class="hidden lg:ml-4 lg:flex lg:space-x-2">
-                <a routerLink="/" routerLinkActive="border-brand-gold text-brand-slate"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Inicio
-                </a>
-                <a routerLink="/reflexiones" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Reflexiones
-                </a>
-                <a routerLink="/proverbios" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Proverbios
-                </a>
-                <a routerLink="/consejos" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Consejos
-                </a>
-                <a routerLink="/clima" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Clima
-                </a>
-                <a routerLink="/tareas" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Tareas
-                </a>
-                <a routerLink="/sabiduria" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Sabiduría
-                </a>
-                <a routerLink="/acontecimientos" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Historia
-                </a>
-                <a routerLink="/actualidad" routerLinkActive="border-brand-gold text-brand-slate"
-                    class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[10px] font-medium text-brand-slate/60 hover:text-brand-slate hover:border-brand-gold/50 transition-colors uppercase tracking-widest">
-                    Actualidad
-                </a>
+            <div class="hidden lg:flex lg:space-x-8">
+                <a routerLink="/columnistas" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Columnistas</a>
+                <a routerLink="/actualidad" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Actualidad</a>
+                <a routerLink="/reflexiones" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Reflexiones</a>
+                <a routerLink="/sabiduria" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Sabiduría</a>
+                <a routerLink="/proverbios" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Refranes</a>
+                <a routerLink="/acontecimientos" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Historia</a>
             </div>
         </div>
     </div>

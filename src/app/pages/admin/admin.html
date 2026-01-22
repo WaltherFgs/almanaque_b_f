@@ -1,0 +1,499 @@
+<section class="bg-brand-paper min-h-screen py-24 px-6 font-sans">
+    <!-- Custom Modal -->
+    <app-modal [isVisible]="modalVisible" [title]="modalTitle" [message]="modalMessage" (confirmed)="performDelete()"
+        (cancelled)="modalVisible = false">
+    </app-modal>
+
+    <!-- Professional Notifications -->
+    <app-notification></app-notification>
+    <div class="max-w-4xl mx-auto">
+        <!-- Admin Header -->
+        <header class="mb-24 border-b border-brand-slate/5 pb-12">
+            <h1 class="text-5xl font-serif font-bold text-brand-slate mb-4">Mesa de <span
+                    class="italic text-brand-gold/60">Control</span></h1>
+            <p class="text-brand-slate/40 text-xs font-bold uppercase tracking-[0.4em]">Gestión de Contenidos • El Faro
+                del Siglo</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="flex gap-8 mb-16 overflow-x-auto pb-4 scrollbar-hide">
+            <button (click)="setTab('refranes')" [class.text-brand-gold]="activeTab === 'refranes'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Refranes</button>
+            <button (click)="setTab('articulos')" [class.text-brand-gold]="activeTab === 'articulos'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Artículos</button>
+            <button (click)="setTab('acontecimientos')" [class.text-brand-gold]="activeTab === 'acontecimientos'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Historia</button>
+            <button (click)="setTab('autores')" [class.text-brand-gold]="activeTab === 'autores'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Columnistas</button>
+            <button (click)="setTab('consejos')" [class.text-brand-gold]="activeTab === 'consejos'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Consejos</button>
+            <button (click)="setTab('tareas')" [class.text-brand-gold]="activeTab === 'tareas'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Plan
+                Ciudadano</button>
+            <button (click)="setTab('pilares')" [class.text-brand-gold]="activeTab === 'pilares'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Sabiduría</button>
+            <button (click)="setTab('settings')" [class.text-brand-gold]="activeTab === 'settings'"
+                class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/30 hover:text-brand-gold transition-colors whitespace-nowrap">Global</button>
+        </div>
+
+        <!-- Content Area: Refranes -->
+        @if (activeTab === 'refranes') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['refranes'] ? 'Editar Refrán' : 'Añadir Nuevo Refrán' }}
+                </h3>
+                <div class="space-y-6">
+                    <input [(ngModel)]="newRefran.texto" type="text" placeholder="El texto del refrán..."
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif italic text-2xl focus:border-brand-gold outline-none transition-colors">
+                    <input [(ngModel)]="newRefran.categoria" type="text" placeholder="Categoría (ej: Prudencia)"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] focus:border-brand-gold outline-none transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveRefran()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['refranes'] ? 'Actualizar refrán' : 'Publicar refrán' }}
+                        </button>
+                        @if (editModes['refranes']) {
+                        <button (click)="resetForm('refranes')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Refranero Actual</h4>
+                <div class="grid gap-6">
+                    @for (r of refranes; track r.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif italic text-brand-slate/80 text-xl">"{{r.texto}}"</p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-gold/60">{{r.categoria}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editRefran(r)"
+                                    class="p-4 text-brand-gold/40 hover:text-brand-gold transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteRefran(r.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Articulos -->
+        @if (activeTab === 'articulos') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['articulos'] ? 'Editar Artículo' : 'Redactar Nuevo Artículo' }}
+                </h3>
+                <div class="space-y-6">
+                    <input [(ngModel)]="newArticulo.titulo" type="text" placeholder="Título del artículo..."
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif font-bold text-3xl focus:border-brand-gold outline-none transition-colors">
+                    <textarea [(ngModel)]="newArticulo.contenido"
+                        placeholder="Contenido del artículo (soporta texto plano)..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif text-lg focus:border-brand-gold outline-none transition-colors min-h-[300px]"></textarea>
+                    <select [(ngModel)]="newArticulo.tipo"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] outline-none">
+                        <option value="actualidad">Actualidad (La Gaceta)</option>
+                        <option value="reflexion">Reflexión (Conciencia)</option>
+                    </select>
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveArticulo()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['articulos'] ? 'Actualizar Artículo' : 'Publicar Artículo' }}
+                        </button>
+                        @if (editModes['articulos']) {
+                        <button (click)="resetForm('articulos')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Artículos Recientes</h4>
+                <div class="grid gap-6">
+                    @for (a of articulos; track a.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif font-bold text-brand-slate/80 text-xl">{{a.titulo}}</p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-emerald/60">{{a.tipo}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editArticulo(a)"
+                                    class="p-4 text-brand-emerald/40 hover:text-brand-emerald transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteArticulo(a.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Historia -->
+        @if (activeTab === 'acontecimientos') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['acontecimientos'] ? 'Editar Hito Histórico' : 'Registrar Hito Histórico' }}
+                </h3>
+                <div class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input [(ngModel)]="newAcontecimiento.anio" type="text" placeholder="Año (ej: 1810)"
+                            class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-2xl font-serif focus:border-brand-gold outline-none">
+                        <input [(ngModel)]="newAcontecimiento.titulo" type="text"
+                            placeholder="Hito (ej: Batalla de Boyacá)"
+                            class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-2xl font-serif focus:border-brand-gold outline-none">
+                    </div>
+                    <input [(ngModel)]="newAcontecimiento.ubicacion" type="text" placeholder="Ubicación"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] focus:border-brand-gold outline-none">
+                    <textarea [(ngModel)]="newAcontecimiento.descripcion" placeholder="Descripción breve..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-lg focus:border-brand-gold outline-none min-h-[100px]"></textarea>
+                    <textarea [(ngModel)]="newAcontecimiento.detalle" placeholder="Detalles adicionales (expandible)..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif text-base focus:border-brand-gold outline-none min-h-[150px]"></textarea>
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveAcontecimiento()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['acontecimientos'] ? 'Actualizar en la Memoria' : 'Registrar en la Memoria' }}
+                        </button>
+                        @if (editModes['acontecimientos']) {
+                        <button (click)="resetForm('acontecimientos')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Línea de Tiempo Actual
+                </h4>
+                <div class="grid gap-6">
+                    @for (e of acontecimientos; track e.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif font-bold text-brand-slate/80 text-xl">{{e.anio}} • {{e.titulo}}
+                                </p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-gold/60">{{e.ubicacion}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editAcontecimiento(e)"
+                                    class="p-4 text-brand-gold/40 hover:text-brand-gold transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteAcontecimiento(e.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Autores -->
+        @if (activeTab === 'autores') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['autores'] ? 'Editar Autor' : 'Registrar Nuevo Autor' }}
+                </h3>
+                <div class="space-y-6">
+                    <input [(ngModel)]="newAutor.nombre" type="text" placeholder="Nombre del Autor..."
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif font-bold text-3xl focus:border-brand-gold outline-none transition-colors">
+                    <input [(ngModel)]="newAutor.especialidad" type="text" placeholder="Especialidad (ej: Historiador)"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] focus:border-brand-gold outline-none transition-colors">
+                    <textarea [(ngModel)]="newAutor.biografia" placeholder="Biografía breve..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif text-lg focus:border-brand-gold outline-none min-h-[150px]"></textarea>
+                    <input [(ngModel)]="newAutor.frase_destacada" type="text"
+                        placeholder="Frase destacada para el home..."
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif italic text-xl focus:border-brand-gold outline-none transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveAutor()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['autores'] ? 'Actualizar Autor' : 'Registrar Autor' }}
+                        </button>
+                        @if (editModes['autores']) {
+                        <button (click)="resetForm('autores')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Mesa Editorial</h4>
+                <div class="grid gap-6">
+                    @for (a of autores; track a.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif font-bold text-brand-slate/80 text-xl">{{a.nombre}}</p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-gold/60">{{a.especialidad}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editAutor(a)"
+                                    class="p-4 text-brand-gold/40 hover:text-brand-gold transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteAutor(a.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Consejos -->
+        @if (activeTab === 'consejos') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['consejos'] ? 'Editar Consejo' : 'Nuevo Consejo Práctico' }}
+                </h3>
+                <div class="space-y-6">
+                    <select [(ngModel)]="newConsejo.categoria"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] outline-none">
+                        <option value="hogar">Para el Hogar</option>
+                        <option value="negocios">Para los Negocios</option>
+                        <option value="relaciones">Para las Relaciones</option>
+                    </select>
+                    <textarea [(ngModel)]="newConsejo.texto" placeholder="Escriba el consejo..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-lg focus:border-brand-gold outline-none min-h-[100px]"></textarea>
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveConsejo()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['consejos'] ? 'Actualizar Consejo' : 'Publicar Consejo' }}
+                        </button>
+                        @if (editModes['consejos']) {
+                        <button (click)="resetForm('consejos')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Consejos Publicados</h4>
+                <div class="grid gap-6">
+                    @for (c of consejos; track c.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif italic text-brand-slate/80 text-lg">"{{c.texto}}"</p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-emerald/60">{{c.categoria}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editConsejo(c)"
+                                    class="p-4 text-brand-gold/40 hover:text-brand-gold transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteConsejo(c.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Tareas -->
+        @if (activeTab === 'tareas') {
+        <div class="animate-fade-in space-y-16">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-8">
+                    {{ editModes['tareas'] ? 'Editar Compromiso' : 'Nuevo Compromiso Diario' }}
+                </h3>
+                <div class="space-y-6">
+                    <select [(ngModel)]="newTarea.seccion"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 text-[10px] uppercase font-bold tracking-[0.2em] outline-none">
+                        <option value="patria">¿Qué bien por mi patria haré hoy?</option>
+                        <option value="horario">Horario del Juicio (Amanecer, Jornada, Ocaso)</option>
+                    </select>
+                    <input [(ngModel)]="newTarea.titulo" type="text"
+                        placeholder="Título/Momento (opcional para Horario)"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif text-xl focus:border-brand-gold outline-none">
+                    <textarea [(ngModel)]="newTarea.texto" placeholder="Descripción de la tarea..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-lg focus:border-brand-gold outline-none min-h-[100px]"></textarea>
+                    <div class="flex gap-4 items-center">
+                        <button (click)="saveTarea()"
+                            class="mt-8 px-8 py-3 bg-brand-slate text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-brand-gold hover:text-brand-slate transition-all">
+                            {{ editModes['tareas'] ? 'Actualizar Tarea' : 'Añadir Tarea' }}
+                        </button>
+                        @if (editModes['tareas']) {
+                        <button (click)="resetForm('tareas')"
+                            class="mt-8 px-8 py-3 text-brand-slate/40 text-[9px] font-bold uppercase tracking-[0.4em] hover:text-brand-slate transition-all">
+                            Cancelar Edición
+                        </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h4 class="text-brand-slate/30 text-[9px] font-bold uppercase tracking-[0.5em]">Plan de Vida Ciudadana
+                </h4>
+                <div class="grid gap-6">
+                    @for (t of tareas; track t.id) {
+                    <div class="p-6 border border-brand-slate/5 flex justify-between items-center bg-white/50">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-serif italic text-brand-slate/80 text-lg">{{t.texto}}</p>
+                                <span
+                                    class="text-[8px] uppercase font-bold tracking-widest text-brand-gold/60">{{t.seccion}}
+                                    {{ t.titulo ? '• ' + t.titulo : '' }}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button (click)="editTarea(t)"
+                                    class="p-4 text-brand-gold/40 hover:text-brand-gold transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Editar</span>
+                                </button>
+                                <button (click)="deleteTarea(t.id)"
+                                    class="p-4 text-red-500/30 hover:text-red-600 transition-colors">
+                                    <span class="text-[9px] font-bold uppercase tracking-widest">Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Content Area: Pilares -->
+        @if (activeTab === 'pilares') {
+        <div class="animate-fade-in space-y-12">
+            @for (p of pilares; track p.id) {
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em]">{{ p.numero }}</h3>
+                    <button (click)="updatePilar(p)"
+                        class="text-brand-emerald text-[9px] font-bold uppercase tracking-widest hover:underline transition-all">Guardar
+                        Pilar</button>
+                </div>
+                <div class="space-y-6">
+                    <input [(ngModel)]="p.titulo" type="text" placeholder="Título del Pilar"
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif font-bold text-3xl focus:border-brand-gold outline-none">
+                    <input [(ngModel)]="p.frase_destacada" type="text" placeholder="Frase destacada..."
+                        class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif italic text-xl focus:border-brand-gold outline-none">
+                    <textarea [(ngModel)]="p.item_1" placeholder="Primer punto de sabiduría..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-4 font-serif text-lg focus:border-brand-gold outline-none mb-4"></textarea>
+                    <textarea [(ngModel)]="p.item_2" placeholder="Segundo punto de sabiduría..."
+                        class="w-full bg-transparent border border-brand-slate/10 p-4 font-serif text-lg focus:border-brand-gold outline-none"></textarea>
+                </div>
+            </div>
+            }
+        </div>
+        }
+
+        <!-- Content Area: Global Settings -->
+        @if (activeTab === 'settings') {
+        <div class="animate-fade-in space-y-12">
+            <div class="p-8 border border-brand-slate/5 bg-white">
+                <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em] mb-12">Configuración General
+                </h3>
+
+                <div class="space-y-12">
+                    <!-- Tip del día -->
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-brand-slate/40">Consejo
+                            Maestro del Día</label>
+                        <textarea [(ngModel)]="settings.tip_del_dia"
+                            (blur)="saveSetting('tip_del_dia', settings.tip_del_dia)"
+                            class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-2xl focus:border-brand-gold outline-none min-h-[120px]"></textarea>
+                    </div>
+
+                    <!-- Clima -->
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-brand-slate/40">Ciudad
+                                Principal</label>
+                            <input [(ngModel)]="settings.clima_ciudad"
+                                (blur)="saveSetting('clima_ciudad', settings.clima_ciudad)"
+                                class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif text-2xl focus:border-brand-gold outline-none">
+                        </div>
+                        <div class="space-y-4">
+                            <label
+                                class="text-[10px] font-bold uppercase tracking-widest text-brand-slate/40">Temperatura
+                                Observada</label>
+                            <input [(ngModel)]="settings.clima_temp"
+                                (blur)="saveSetting('clima_temp', settings.clima_temp)"
+                                class="w-full bg-transparent border-b border-brand-slate/10 py-4 font-serif text-2xl focus:border-brand-gold outline-none">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-brand-slate/40">Observación
+                            de la Jornada (Clima)</label>
+                        <textarea [(ngModel)]="settings.clima_observacion"
+                            (blur)="saveSetting('clima_observacion', settings.clima_observacion)"
+                            class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-lg focus:border-brand-gold outline-none min-h-[100px]"></textarea>
+                    </div>
+
+                    <!-- Home Hero -->
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-brand-slate/40">Mensaje Hero
+                            (Home)</label>
+                        <textarea [(ngModel)]="settings.hero_message"
+                            (blur)="saveSetting('hero_message', settings.hero_message)"
+                            class="w-full bg-transparent border border-brand-slate/10 p-6 font-serif italic text-xl focus:border-brand-gold outline-none min-h-[100px]"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Back to Public -->
+    <div class="max-w-4xl mx-auto mt-24 text-center">
+        <a routerLink="/"
+            class="text-[8px] font-bold uppercase tracking-[0.5em] text-brand-slate/20 hover:text-brand-gold transition-colors">←
+            Volver al Sitio Público</a>
+    </div>
+</section>

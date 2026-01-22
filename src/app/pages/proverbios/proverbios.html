@@ -1,114 +1,51 @@
-<section class="bg-brand-paper py-20 px-4 sm:px-6 lg:px-8">
+<!-- Minimalist Header -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.6em] mb-12">Sabiduría Popular • El
+            Refranero</h3>
+        <h1 class="text-6xl md:text-[9rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-8">
+            Ecos del <br><span class="italic text-brand-gold/60">Pueblo</span>
+        </h1>
+        <div class="w-16 h-px bg-brand-gold mx-auto mt-12 opacity-30"></div>
+    </div>
+</section>
+
+<!-- Content: Minimalist Gallery (Dynamic) -->
+<section class="bg-brand-paper py-40 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold font-serif text-brand-slate sm:text-4xl italic">Proverbios</h2>
-            <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
-            <p class="mt-6 text-brand-slate/60 max-w-2xl mx-auto">
-                Dichos memorables que han guiado a generaciones con su sabiduría práctica.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+            @for (refran of refranes; track refran.id) {
+            <!-- Dynamic Card -->
+            <article
+                class="group bg-white p-12 shadow-sm border border-brand-slate/5 hover:border-brand-emerald transition-all duration-700 reveal-on-scroll">
+                <span
+                    class="text-brand-gold text-4xl font-serif mb-8 block transition-transform duration-700 group-hover:scale-110">“</span>
+                <p class="text-3xl font-serif text-brand-slate italic mb-10 leading-tight">"{{refran.texto}}"</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-brand-slate/40 text-pretty">Sobre
+                        la {{refran.categoria || 'Sabiduría'}}</span>
+                </div>
+            </article>
+            }
+
+            <!-- Fallback if empty -->
+            @if (refranes.length === 0) {
+            <div class="col-span-full py-24 text-center border border-dashed border-brand-slate/10 animate-fade-in">
+                <p class="text-brand-slate/20 text-xs font-serif italic text-pretty">El refranero está siendo recopilado
+                    en la bitácora del Faro...</p>
+            </div>
+            }
+
         </div>
+    </div>
+</section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            <!-- Proverbio 1 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    La virtud sin habilidad práctica no es suficiente; la habilidad sin virtud no es deseable.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-
-            <!-- Proverbio 2 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    La ociosidad es el sepulcro del hombre vivo.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-
-            <!-- Proverbio 3 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    Temprano a la cama y temprano levantado, hacen al hombre sano, rico y sabio.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-
-            <!-- Proverbio 4 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    La inversión en conocimiento paga el mejor interés.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-
-            <!-- Proverbio 5 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    El tiempo es dinero.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-
-            <!-- Proverbio 6 -->
-            <div
-                class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/10 hover:shadow-md transition-shadow">
-                <div class="text-brand-gold mb-4 italic text-4xl font-serif">"</div>
-                <blockquote class="text-brand-slate text-lg leading-relaxed mb-6 font-sans">
-                    Un centavo ahorrado es un centavo ganado.
-                </blockquote>
-                <div class="text-brand-gold/60 text-sm font-sans flex items-center gap-2">
-                    <span class="w-8 h-px bg-brand-gold/30"></span>
-                    Benjamin Franklin
-                </div>
-            </div>
-        </div>
-
-        <!-- Categorías -->
-        <div class="bg-brand-slate rounded-3xl p-12 text-brand-paper">
-            <h3 class="text-2xl font-serif font-bold text-center mb-12 italic">Categorías de Sabiduría</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                    <h4 class="font-serif font-bold text-lg text-brand-gold">Economía</h4>
-                    <p class="mt-2 text-sm text-brand-paper/60">Ahorro, gasto y la naturaleza de la riqueza.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                    <h4 class="font-serif font-bold text-lg text-brand-gold">Tiempo</h4>
-                    <p class="mt-2 text-sm text-brand-paper/60">Productividad y el uso sagrado del tiempo.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                    <h4 class="font-serif font-bold text-lg text-brand-gold">Virtud</h4>
-                    <p class="mt-2 text-sm text-brand-paper/60">Moralidad, carácter y rectitud personal.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                    <h4 class="font-serif font-bold text-lg text-brand-gold">Sabiduría</h4>
-                    <p class="mt-2 text-sm text-brand-paper/60">Conocimiento y aprendizaje continuo.</p>
-                </div>
-            </div>
-        </div>
+<!-- Simple Footer Quote -->
+<section class="bg-brand-paper py-40 text-center border-t border-brand-slate/5">
+    <div class="max-w-3xl mx-auto px-6 reveal-on-scroll">
+        <p class="text-3xl md:text-4xl font-serif italic text-brand-slate/40 leading-tight">
+            "La sabiduría popular es el eco de la experiencia de los siglos."
+        </p>
     </div>
 </section>

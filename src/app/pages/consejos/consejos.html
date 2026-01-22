@@ -21,22 +21,15 @@
                     <h3 class="text-xl font-serif font-bold text-brand-slate">Para el Hogar</h3>
                 </div>
                 <ul class="space-y-4">
+                    @for (c of getConsejosByCategoria('hogar'); track c.id) {
                     <li class="flex items-start gap-3 text-brand-slate/80">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Mantenga su hogar limpio para mantener la mente clara.
+                        {{ c.texto }}
                     </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Repare las cosas antes de que se deterioren.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Planifique sus comidas para evitar desperdicios.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Vuelva a la cama temprano y levántese temprano.
-                    </li>
+                    }
+                    @if (getConsejosByCategoria('hogar').length === 0) {
+                    <li class="text-brand-slate/30 italic text-sm">Esperando consejos para el hogar...</li>
+                    }
                 </ul>
             </div>
 
@@ -52,22 +45,15 @@
                     <h3 class="text-xl font-serif font-bold text-brand-slate">Para los Negocios</h3>
                 </div>
                 <ul class="space-y-4">
+                    @for (c of getConsejosByCategoria('negocios'); track c.id) {
                     <li class="flex items-start gap-3 text-brand-slate/80">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Sea puntual en todas sus citas y compromisos.
+                        {{ c.texto }}
                     </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Mantenga registros detallados de sus transacciones.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Cuidado con los gastos pequeños; un agujero poco profundo hunde un barco.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Cuidado con tu crédito y la confianza ganada.
-                    </li>
+                    }
+                    @if (getConsejosByCategoria('negocios').length === 0) {
+                    <li class="text-brand-slate/30 italic text-sm">Esperando consejos para los negocios...</li>
+                    }
                 </ul>
             </div>
 
@@ -83,22 +69,15 @@
                     <h3 class="text-xl font-serif font-bold text-brand-slate">Para las Relaciones</h3>
                 </div>
                 <ul class="space-y-4">
+                    @for (c of getConsejosByCategoria('relaciones'); track c.id) {
                     <li class="flex items-start gap-3 text-brand-slate/80">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        La sinceridad es la mejor política.
+                        {{ c.texto }}
                     </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Escuche más de lo que habla.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Mantenga sus promesas para conservar su reputación.
-                    </li>
-                    <li class="flex items-start gap-3 text-brand-slate/80">
-                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                        Evite discusiones innecesarias.
-                    </li>
+                    }
+                    @if (getConsejosByCategoria('relaciones').length === 0) {
+                    <li class="text-brand-slate/30 italic text-sm">Esperando consejos para las relaciones...</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -111,7 +90,8 @@
                 <div>
                     <h4 class="text-lg font-serif font-bold text-brand-slate">Consejo Maestro del Día</h4>
                     <p class="mt-2 text-brand-slate/70 italic text-lg leading-relaxed">
-                        "No pospongas para mañana lo que puedes hacer hoy. La procrastinación es la ladrona del tiempo."
+                        "{{ settings.tip_del_dia || 'No pospongas para mañana lo que puedes hacer hoy. La
+                        procrastinación es la ladrona del tiempo.' }}"
                     </p>
                 </div>
             </div>

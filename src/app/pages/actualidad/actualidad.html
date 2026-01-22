@@ -1,83 +1,99 @@
-<section class="bg-brand-paper py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold font-serif text-brand-slate uppercase tracking-[0.2em]">La Gaceta de la
-                Actualidad</h2>
-            <div class="flex items-center justify-center gap-4 mt-4 text-brand-gold font-serif italic">
-                <span class="h-px w-12 bg-brand-gold"></span>
-                Filadelfia, Pensilvania • Año de Nuestro Señor 1752
-                <span class="h-px w-12 bg-brand-gold"></span>
-            </div>
+<!-- Minimalist Header: The Gaceta -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-10">Boletín Oficial de Análisis
+        </h3>
+        <h1 class="text-6xl md:text-[8rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-8">
+            La Gaceta <span class="italic text-brand-gold/60">del Faro</span>
+        </h1>
+        <div class="flex items-center justify-center gap-8 text-brand-paper/30 font-serif italic text-xl">
+            Bogotá, D.C. • Edición Ciudadana
         </div>
+    </div>
+</section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t-2 border-brand-slate/10 pt-12">
-            <!-- Main Story: Electricity -->
-            <article class="space-y-6 md:border-r md:border-brand-slate/10 md:pr-12">
-                <div class="bg-brand-gold/5 p-6 rounded-sm border-l-4 border-brand-gold">
-                    <h3 class="text-2xl font-serif font-bold text-brand-slate mb-4 leading-tight">Extraordinario
-                        Experimento con un Barrilete y Electricidad</h3>
+<!-- Content: Minimalist Hierarchy -->
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-24 items-start">
+
+            <!-- Main Feed -->
+            <div class="lg:col-span-8 space-y-32">
+
+                @for (articulo of articulos; track articulo.id) {
+                <!-- Dynamic Feature Story -->
+                <article class="group reveal-on-scroll">
+                    <h4 class="text-brand-emerald text-[9px] font-bold uppercase tracking-[0.3em] mb-6">Editorial
+                        Central • {{articulo.fecha | date:'mediumDate'}}</h4>
+                    <h2
+                        class="text-5xl md:text-7xl font-serif font-bold text-brand-slate leading-[0.9] tracking-tighter mb-12 group-hover:text-brand-emerald transition-colors">
+                        {{articulo.titulo}}
+                    </h2>
                     <p
-                        class="text-brand-slate/80 leading-relaxed font-serif first-letter:text-5xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
-                        Se ha verificado recientemente un hecho que asombrará a la comunidad científica. Un caballero de
-                        esta ciudad ha demostrado que el rayo no es sino electricidad en una escala monumental. Usando
-                        un simple barrilete de seda durante una tormenta, logró capturar la esencia del fuego celestial.
+                        class="text-brand-slate/60 text-2xl font-serif italic leading-relaxed mb-12 text-pretty whitespace-pre-wrap">
+                        {{articulo.contenido}}
                     </p>
-                    <div class="mt-6 flex items-center gap-4 py-4 border-t border-brand-gold/20">
-                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Ciencia &
-                            Progreso</span>
+                    <div class="flex items-center gap-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gold/60">Por:
+                            {{articulo.autor || 'Mesa Editorial'}}</span>
+                        <div class="w-12 h-px bg-brand-gold/40"></div>
+                    </div>
+                </article>
+
+                <div class="h-px bg-brand-slate/5"></div>
+                }
+
+                @if (articulos.length === 0) {
+                <div class="py-24 text-center border border-dashed border-brand-slate/10 animate-fade-in">
+                    <p class="text-brand-slate/20 text-xl font-serif italic text-pretty">Aguardando la próxima edición
+                        de la Gaceta...</p>
+                </div>
+                }
+
+            </div>
+
+            <!-- Sidebar (Dynamic Columnistas and Static Principles) -->
+            <aside class="lg:col-span-4 space-y-12">
+                <div class="p-10 border border-brand-slate/5 bg-white/50 reveal-on-scroll">
+                    <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Mesa Editorial
+                    </h4>
+                    <div class="space-y-10">
+                        @for (c of columnistas; track c.id) {
+                        <div class="group cursor-pointer">
+                            <p
+                                class="text-brand-slate/80 font-serif italic text-xl leading-tight mb-3 group-hover:text-brand-emerald transition-colors">
+                                "{{ c.frase_destacada || (c.biografia | slice:0:60) + '...' }}"</p>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-gold/60">{{ c.nombre
+                                }}</span>
+                        </div>
+                        }
+
+                        @if (columnistas.length === 0) {
+                        <p class="text-brand-slate/20 text-xs font-serif italic">Mesa editorial en formación...</p>
+                        }
                     </div>
                 </div>
-            </article>
 
-            <!-- Political Story: Join or Die -->
-            <article class="space-y-6 lg:pl-4">
-                <h3 class="text-2xl font-serif font-bold text-brand-slate mb-4 leading-tight italic">Un Llamado a la
-                    Unión de las Colonias</h3>
-                <p class="text-brand-slate/80 leading-relaxed font-serif">
-                    La desunión entre nuestras provincias solo sirve para fortalecer a quienes buscan oprimirnos. Es
-                    imperativo que nos unamos bajo un plan común de defensa y comercio. La metáfora de la serpiente
-                    dividida resuena hoy más que nunca en las asambleas de Albany.
-                </p>
-                <div class="p-4 border-2 border-brand-slate bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
-                    <p class="text-center font-bold text-brand-slate tracking-tighter text-3xl">JOIN, or DIE.</p>
+                <div class="p-10 border border-brand-slate/5 bg-brand-slate text-brand-paper reveal-on-scroll">
+                    <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-8">Sabiduría Civil
+                    </h4>
+                    <blockquote class="text-2xl font-serif italic mb-10 leading-tight">
+                        "Educar el juicio es cultivar el mejor campo de la patria."
+                    </blockquote>
+                    <div class="w-8 h-px bg-brand-gold/40"></div>
                 </div>
-                <p class="text-xs text-brand-slate/60 text-right italic mt-2">— Comentario Editorial</p>
-            </article>
+            </aside>
         </div>
+    </div>
+</section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 border-t border-brand-slate/10 pt-8">
-            <!-- Short News 1 -->
-            <div class="space-y-3">
-                <h4 class="text-sm font-bold uppercase text-brand-gold tracking-widest">Mejoras Urbanas</h4>
-                <p class="text-brand-slate/70 text-sm leading-relaxed">
-                    Se propone la pavimentación de la calle Market. Los vecinos están recolectando suscripciones para
-                    mejorar el tránsito de carruajes.
-                </p>
-            </div>
-            <!-- Short News 2 -->
-            <div class="space-y-3">
-                <h4 class="text-sm font-bold uppercase text-brand-gold tracking-widest">Biblioteca</h4>
-                <p class="text-brand-slate/70 text-sm leading-relaxed">
-                    La Library Company anuncia la llegada de nuevos tomos desde Londres. Disponibles para suscriptores
-                    desde el próximo lunes.
-                </p>
-            </div>
-            <!-- Short News 3 -->
-            <div class="space-y-3">
-                <h4 class="text-sm font-bold uppercase text-brand-gold tracking-widest">Seguridad</h4>
-                <p class="text-brand-slate/70 text-sm leading-relaxed">
-                    La Union Fire Company ha respondido con éxito a un conato de incendio en la zona del muelle. La
-                    diligencia de los voluntarios salvó tres almacenes.
-                </p>
-            </div>
-        </div>
-
-        <!-- Final Note -->
-        <div class="mt-16 text-center border-t border-brand-gold/20 pt-8">
-            <p class="text-brand-slate/50 text-xs italic">
-                Impreso y vendido por B. Franklin en Market-Street. Las suscripciones para este Almanaque son recibidas
-                con gratitud.
-            </p>
-        </div>
+<!-- Simple Footer Quote -->
+<section class="bg-brand-slate py-40 text-center relative overflow-hidden">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 reveal-on-scroll">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.8em] mb-12 opacity-30">El Archivo del
+            Faro</h3>
+        <p class="text-4xl md:text-5xl font-serif italic text-brand-paper/60 leading-tight">
+            "Todo análisis requiere memoria."
+        </p>
     </div>
 </section>
