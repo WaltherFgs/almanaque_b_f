@@ -1,3 +1,146 @@
-```gitignore
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almanaque Moderno</title>
+    <link rel="stylesheet" href="almanaque_styles.css">
+</head>
+<body>
+    <header>
+        <h1>Almanaque Moderno</h1>
+        <nav>
+            <ul>
+                <li><a href="#hoje">Hoje</a></li>
+                <li><a href="#calendario">Calendário</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#curiosidades">Curiosidades</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section id="hoje">
+            <h2>Data de Hoje</h2>
+            <p id="data-hoje"></p>
+        </section>
+
+        <section id="calendario">
+            <h2>Calendário</h2>
+            <div id="calendario-container"></div>
+        </section>
+
+        <section id="eventos">
+            <h2>Eventos do Dia</h2>
+            <ul id="eventos-lista">
+                <li>Nenhum evento registrado para hoje.</li>
+            </ul>
+        </section>
+
+        <section id="curiosidades">
+            <h2>Curiosidades Históricas</h2>
+            <ul id="curiosidades-lista">
+                <li>Hoje é um dia comum na história.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Almanaque Moderno. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para exibir a data atual
+        function exibirDataAtual() {
+            const data = new Date();
+            const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('data-hoje').textContent = data.toLocaleDateString('pt-BR', opcoes);
+        }
+
+        // Função para gerar o calendário do mês atual
+        function gerarCalendario() {
+            const data = new Date();
+            const mes = data.getMonth();
+            const ano = data.getFullYear();
+
+            const primeiroDia = new Date(ano, mes, 1).getDay();
+            const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+
+            let calendarioHTML = '<table>';
+            calendarioHTML += '<tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr>';
+
+            let dia = 1;
+            for (let i = 0; i < 6; i++) {
+                calendarioHTML += '<tr>';
+                for (let j = 0; j < 7; j++) {
+                    if ((i === 0 && j < primeiroDia) || dia > diasNoMes) {
+                        calendarioHTML += '<td></td>';
+                    } else {
+                        calendarioHTML += `<td>${dia}</td>`;
+                        dia++;
+                    }
+                }
+                calendarioHTML += '</tr>';
+                if (dia > diasNoMes) break;
+            }
+
+            calendarioHTML += '</table>';
+            document.getElementById('calendario-container').innerHTML = calendarioHTML;
+        }
+
+        // Função para carregar eventos do dia (simulado)
+        function carregarEventosDoDia() {
+            // Simulação de eventos
+            const eventos = [
+                "Aniversário de alguém importante",
+                "Feriado nacional",
+                "Evento histórico ocorrido hoje"
+            ];
+
+            const listaEventos = document.getElementById('eventos-lista');
+            listaEventos.innerHTML = '';
+
+            if (eventos.length > 0) {
+                eventos.forEach(evento => {
+                    const li = document.createElement('li');
+                    li.textContent = evento;
+                    listaEventos.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'Nenhum evento registrado para hoje.';
+                listaEventos.appendChild(li);
+            }
+        }
+
+        // Função para carregar curiosidades históricas (simulado)
+        function carregarCuriosidades() {
+            // Simulação de curiosidades
+            const curiosidades = [
+                "Em 1900, foi inventado o zíper.",
+                "Em 1969, Neil Armstrong pisou na Lua.",
+                "Em 1989, o World Wide Web foi criado."
+            ];
+
+            const listaCuriosidades = document.getElementById('curiosidades-lista');
+            listaCuriosidades.innerHTML = '';
+
+            curiosidades.forEach(curiosidade => {
+                const li = document.createElement('li');
+                li.textContent = curiosidade;
+                listaCuriosidades.appendChild(li);
+            });
+        }
+
+        // Inicializar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            exibirDataAtual();
+            gerarCalendario();
+            carregarEventosDoDia();
+            carregarCuriosidades();
+        });
+    </script>
+</body>
+</html>
 ```
