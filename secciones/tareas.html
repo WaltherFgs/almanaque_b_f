@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas del Día - Almanaque de Benjamin Franklin</title>
+    <link rel="stylesheet" href="../almanaque_styles.css">
+</head>
+<body class="window-body">
+    <div class="window-container">
+        <header class="window-header">
+            <h2>Tareas del Día</h2>
+            <button class="close-btn" onclick="window.close()">&times;</button>
+        </header>
+        
+        <main class="window-content">
+            <div class="daily-planner">
+                <div class="date-display">
+                    <h3>Hoy es <span id="currentDate"></span></h3>
+                    <p>Planifique su día con sabiduría según los principios de Benjamin Franklin</p>
+                </div>
+                
+                <div class="tasks-section">
+                    <h4>Lista de Tareas</h4>
+                    <ul class="task-list" id="taskList">
+                        <li class="task-item">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Leer durante 30 minutos</label>
+                            <span class="task-time">Mañana</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Realizar tareas domésticas importantes</label>
+                            <span class="task-time">Mañana</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Trabajar en un proyecto personal</label>
+                            <span class="task-time">Tarde</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox" id="task4">
+                            <label for="task4">Reflexionar sobre el día y escribir en un diario</label>
+                            <span class="task-time">Noche</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox" id="task5">
+                            <label for="task5">Planificar el día siguiente</label>
+                            <span class="task-time">Noche</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="add-task-form">
+                        <h4>Agregar Nueva Tarea</h4>
+                        <input type="text" id="newTaskInput" placeholder="Escribe una nueva tarea...">
+                        <button class="btn-add-task" onclick="addNewTask()">Agregar</button>
+                    </div>
+                </div>
+                
+                <div class="virtue-focus">
+                    <h4>Virtud del Día: Industria</h4>
+                    <p>"La industria corrige los defectos de la fortuna." - Benjamin Franklin</p>
+                    <p>Hoy, concéntrese en completar sus tareas con diligencia y eficiencia.</p>
+                </div>
+                
+                <div class="day-plan">
+                    <h4>Planificación del Día</h4>
+                    <div class="time-blocks">
+                        <div class="time-block">
+                            <h5>Mañana (5:00 - 12:00)</h5>
+                            <ul>
+                                <li>Despertar temprano</li>
+                                <li>Ejercicio ligero</li>
+                                <li>Desayuno saludable</li>
+                                <li>Revisión de tareas prioritarias</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="time-block">
+                            <h5>Tarde (12:00 - 18:00)</h5>
+                            <ul>
+                                <li>Trabajo/productividad</li>
+                                <li>Comida balanceada</li>
+                                <li>Actividades personales</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="time-block">
+                            <h5>Noche (18:00 - 22:00)</h5>
+                            <ul>
+                                <li>Cena</li>
+                                <li>Reflexión diaria</li>
+                                <li>Lectura</li>
+                                <li>Preparativos para el día siguiente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // Mostrar la fecha actual
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = today.toLocaleDateString('es-ES', options);
+        
+        function addNewTask() {
+            const input = document.getElementById('newTaskInput');
+            const taskText = input.value.trim();
+            
+            if(taskText) {
+                const taskList = document.getElementById('taskList');
+                const newTaskId = 'task' + (taskList.children.length + 1);
+                
+                const li = document.createElement('li');
+                li.className = 'task-item';
+                li.innerHTML = `
+                    <input type="checkbox" id="${newTaskId}">
+                    <label for="${newTaskId}">${taskText}</label>
+                    <span class="task-time">Día</span>
+                `;
+                
+                taskList.appendChild(li);
+                input.value = '';
+            }
+        }
+        
+        // Permitir agregar tarea con Enter
+        document.getElementById('newTaskInput').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                addNewTask();
+            }
+        });
+    </script>
+</body>
+</html>

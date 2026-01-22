@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexiones Diarias - Almanaque de Benjamin Franklin</title>
+    <link rel="stylesheet" href="../almanaque_styles.css">
+</head>
+<body class="window-body">
+    <div class="window-container">
+        <header class="window-header">
+            <h2>Reflexiones Diarias</h2>
+            <button class="close-btn" onclick="window.close()">&times;</button>
+        </header>
+        
+        <main class="window-content">
+            <div class="entries-grid">
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>La Importancia del Trabajo Duro</h3>
+                    <blockquote class="quote-text">
+                        "El trabajo duro en la juventud es descanso en la vejez."
+                    </blockquote>
+                    <time class="date" datetime="1758-01-23">Enero 23, 1758</time>
+                </article>
+                
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Sobre la Economía</h3>
+                    <blockquote class="quote-text">
+                        "Una moneda ahorrada es una moneda ganada."
+                    </blockquote>
+                    <time class="date" datetime="1757-02-15">Febrero 15, 1757</time>
+                </article>
+                
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <h3>Sobre el Tiempo</h3>
+                    <blockquote class="quote-text">
+                        "El tiempo es dinero. No pierdas tiempo valioso."
+                    </blockquote>
+                    <time class="date" datetime="1758-03-10">Marzo 10, 1758</time>
+                </article>
+                
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Sobre la Virtud</h3>
+                    <blockquote class="quote-text">
+                        "La virtud sin habilidad práctica no es suficiente; la habilidad sin virtud no es deseable."
+                    </blockquote>
+                    <time class="date" datetime="1758-04-05">Abril 5, 1758</time>
+                </article>
+                
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Sobre el Conocimiento</h3>
+                    <blockquote class="quote-text">
+                        "La inversión en conocimiento paga el mejor interés."
+                    </blockquote>
+                    <time class="date" datetime="1758-05-12">Mayo 12, 1758</time>
+                </article>
+                
+                <article class="entry-card">
+                    <div class="entry-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Sobre la Salud</h3>
+                    <blockquote class="quote-text">
+                        "Temprano a la cama y temprano levantado, hacen al hombre sano, rico y sabio."
+                    </blockquote>
+                    <time class="date" datetime="1758-06-18">Junio 18, 1758</time>
+                </article>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        function shuffleContent(sectionId) {
+            const cards = document.querySelectorAll('.entry-card');
+            const cardsArray = Array.from(cards);
+            for (let i = cardsArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+            }
+            cardsArray.forEach(card => {
+                card.parentNode.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
