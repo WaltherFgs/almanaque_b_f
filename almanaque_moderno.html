@@ -26,14 +26,15 @@
             <button class="tab-btn" onclick="showSection('quotes')">Citas Notables</button>
         </div>
 
-        <div class="content-container" id="contentContainer">
+        <div class="main-container">
             <!-- Ventana de Reflexiones -->
-            <div class="window" id="reflections-window">
+            <div class="window-full" id="reflections-window">
                 <div class="window-header">
                     <div class="window-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h2 class="window-title">Reflexiones Diarias</h2>
+                    <button class="close-btn" onclick="closeWindow()">&times;</button>
                 </div>
                 <div class="window-content">
                     <div class="reflection-item">
@@ -52,12 +53,13 @@
             </div>
 
             <!-- Ventana de Clima -->
-            <div class="window" id="weather-window">
+            <div class="window-full" id="weather-window">
                 <div class="window-header">
                     <div class="window-icon">
                         <i class="fas fa-cloud-sun"></i>
                     </div>
                     <h2 class="window-title">Predicción del Tiempo</h2>
+                    <button class="close-btn" onclick="closeWindow()">&times;</button>
                 </div>
                 <div class="window-content">
                     <div class="weather-card">
@@ -72,12 +74,13 @@
             </div>
 
             <!-- Ventana de Consejos -->
-            <div class="window" id="advice-window">
+            <div class="window-full" id="advice-window">
                 <div class="window-header">
                     <div class="window-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h2 class="window-title">Consejos Prácticos</h2>
+                    <button class="close-btn" onclick="closeWindow()">&times;</button>
                 </div>
                 <div class="window-content">
                     <div class="advice-item">
@@ -96,12 +99,13 @@
             </div>
 
             <!-- Ventana de Eventos Históricos -->
-            <div class="window" id="events-window">
+            <div class="window-full" id="events-window">
                 <div class="window-header">
                     <div class="window-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <h2 class="window-title">Eventos Históricos</h2>
+                    <button class="close-btn" onclick="closeWindow()">&times;</button>
                 </div>
                 <div class="window-content">
                     <div class="event-item">
@@ -120,12 +124,13 @@
             </div>
 
             <!-- Ventana de Citas Notables -->
-            <div class="window" id="quotes-window">
+            <div class="window-full" id="quotes-window">
                 <div class="window-header">
                     <div class="window-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
                     <h2 class="window-title">Citas Notables</h2>
+                    <button class="close-btn" onclick="closeWindow()">&times;</button>
                 </div>
                 <div class="window-content">
                     <div class="quote-item">
@@ -166,30 +171,38 @@
             
             event.target.classList.add('active');
             
-            // Mostrar u ocultar ventanas según la sección seleccionada
-            const windows = document.querySelectorAll('.window');
+            // Ocultar todas las ventanas primero
+            document.querySelectorAll('.window-full').forEach(window => {
+                window.style.display = 'none';
+            });
             
-            if (sectionId === 'all') {
-                windows.forEach(window => {
-                    window.style.display = 'block';
-                    window.classList.remove('hidden');
-                });
+            // Mostrar solo la ventana seleccionada
+            if (sectionId !== 'all') {
+                const selectedWindow = document.getElementById(sectionId + '-window');
+                if (selectedWindow) {
+                    selectedWindow.style.display = 'flex';
+                    selectedWindow.style.flexDirection = 'column';
+                }
             } else {
-                windows.forEach(window => {
-                    if (window.id === sectionId + '-window') {
-                        window.style.display = 'block';
-                        window.classList.remove('hidden');
-                    } else {
-                        window.style.display = 'none';
-                        window.classList.add('hidden');
-                    }
-                });
+                // Si se selecciona "Todas", mostrar la primera ventana
+                document.querySelector('.window-full').style.display = 'flex';
+                document.querySelector('.window-full').style.flexDirection = 'column';
             }
+        }
+        
+        // Función para cerrar la ventana actual
+        function closeWindow() {
+            document.querySelectorAll('.window-full').forEach(window => {
+                window.style.display = 'none';
+            });
         }
 
         // Inicializar la página
         document.addEventListener('DOMContentLoaded', function() {
             updateCurrentDate();
+            // Mostrar la primera ventana por defecto
+            document.querySelector('.window-full').style.display = 'flex';
+            document.querySelector('.window-full').style.flexDirection = 'column';
         });
     </script>
 </body>
