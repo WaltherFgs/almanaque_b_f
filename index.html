@@ -3,103 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almanaque de Benjamin Franklin</title>
+    <meta name="description" content="Un almanaque inspirado en Benjamin Franklin con sabiduría, consejos prácticos y reflexiones diarias">
+    <title>Almanaque de Benjamin Franklin | Sabiduría para cada día</title>
+    
+    <!-- Modern styling and icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Almanaque de Benjamin Franklin</h1>
-        <p>"Un lugar para sabiduría, observaciones y reflexiones diarias"</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#reflexiones">Reflexiones Diarias</a></li>
-            <li><a href="#consejos">Consejos Prácticos</a></li>
-            <li><a href="#prediccion">Predicción del Tiempo</a></li>
-            <li><a href="#eventos">Eventos Históricos</a></li>
-            <li><a href="#citas">Citas Notables</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="reflexiones">
-            <h2>Reflexiones Diarias</h2>
-            <div class="entry">
-                <h3>La Importancia del Trabajo Duro</h3>
-                <p>"El trabajo duro en la juventud es descanso en la vejez."</p>
-                <p class="date">Enero 23, 1758</p>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h1>Almanaque de Benjamin Franklin</h1>
+                <p class="subtitle">Sabiduría para cada día desde el siglo XVIII</p>
+                <div class="current-date" id="currentDate">
+                    <i class="fas fa-calendar-day"></i>
+                    <span id="dateText">Cargando fecha...</span>
+                </div>
             </div>
-            <div class="entry">
-                <h3>Sobre la Economía</h3>
-                <p>"Una moneda ahorrada es una moneda ganada."</p>
-                <p class="date">Febrero 15, 1757</p>
-            </div>
-        </section>
-
-        <section id="consejos">
-            <h2>Consejos Prácticos</h2>
-            <div class="advice">
-                <h3>Para el Hogar</h3>
-                <ul>
-                    <li>Mantenga su hogar limpio y ordenado para mantener la mente clara.</li>
-                    <li>Repare las cosas antes de que se deterioren por completo.</li>
-                    <li>Planifique sus comidas semanales para evitar desperdicios.</li>
+            
+            <nav class="main-nav" aria-label="Navegación principal">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <i class="fas fa-bars"></i>
+                    <span class="sr-only">Menú</span>
+                </button>
+                <ul id="nav-menu" class="nav-menu">
+                    <li><a href="#reflexiones" aria-current="page"><i class="fas fa-brain"></i> Reflexiones</a></li>
+                    <li><a href="#consejos"><i class="fas fa-lightbulb"></i> Consejos</a></li>
+                    <li><a href="#prediccion"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                    <li><a href="#eventos"><i class="fas fa-history"></i> Historia</a></li>
+                    <li><a href="#citas"><i class="fas fa-quote-right"></i> Citas</a></li>
                 </ul>
-            </div>
-            <div class="advice">
-                <h3>Para los Negocios</h3>
-                <ul>
-                    <li>Sea puntual en todas sus citas y compromisos.</li>
-                    <li>Mantenga registros detallados de sus transacciones.</li>
-                    <li>Cuide sus relaciones comerciales como cuidaría a sus amigos.</li>
-                </ul>
-            </div>
-        </section>
+            </nav>
+        </header>
 
-        <section id="prediccion">
-            <h2>Predicción del Tiempo</h2>
-            <div class="weather">
-                <h3>Próximos días</h3>
-                <p>Observación: El cielo despejado en la tarde prevé buen tiempo para mañana.</p>
-                <p>Consejo: Ideal para tender ropa o realizar trabajos al aire libre.</p>
-            </div>
-        </section>
+        <main class="main-content">
+            <section id="reflexiones" class="content-section" aria-labelledby="reflexiones-heading">
+                <div class="section-header">
+                    <h2 id="reflexiones-heading">
+                        <i class="fas fa-brain"></i>
+                        Reflexiones Diarias
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" onclick="shuffleContent('reflexiones')">
+                            <i class="fas fa-random"></i> Aleatorio
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="entries-grid">
+                    <article class="entry-card">
+                        <div class="entry-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>La Importancia del Trabajo Duro</h3>
+                        <blockquote class="quote-text">
+                            "El trabajo duro en la juventud es descanso en la vejez."
+                        </blockquote>
+                        <time class="date" datetime="1758-01-23">Enero 23, 1758</time>
+                    </article>
+                    
+                    <article class="entry-card">
+                        <div class="entry-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>Sobre la Economía</h3>
+                        <blockquote class="quote-text">
+                            "Una moneda ahorrada es una moneda ganada."
+                        </blockquote>
+                        <time class="date" datetime="1757-02-15">Febrero 15, 1757</time>
+                    </article>
+                    
+                    <article class="entry-card">
+                        <div class="entry-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3>Sobre el Tiempo</h3>
+                        <blockquote class="quote-text">
+                            "El tiempo es dinero. No pierdas tiempo valioso."
+                        </blockquote>
+                        <time class="date" datetime="1758-03-10">Marzo 10, 1758</time>
+                    </article>
+                </div>
+            </section>
 
-        <section id="eventos">
-            <h2>Eventos Históricos</h2>
-            <div class="historical-event">
-                <h3>Enero 23</h3>
-                <p>1706 - Nacimiento de Benjamin Franklin en Boston, Massachusetts.</p>
-                <p>1776 - Se publica "Common Sense" de Thomas Paine.</p>
-            </div>
-            <div class="historical-event">
-                <h3>Febrero 22</h3>
-                <p>1732 - Nacimiento de George Washington.</p>
-                <p>1788 - Massachusetts ratifica la Constitución de los Estados Unidos.</p>
-            </div>
-        </section>
+            <section id="consejos" class="content-section" aria-labelledby="consejos-heading">
+                <div class="section-header">
+                    <h2 id="consejos-heading">
+                        <i class="fas fa-lightbulb"></i>
+                        Consejos Prácticos
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" onclick="toggleAdviceType()">
+                            <i class="fas fa-sync-alt"></i> Alternar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="advice-container">
+                    <article class="advice-category">
+                        <div class="category-header">
+                            <h3><i class="fas fa-home"></i> Para el Hogar</h3>
+                        </div>
+                        <ul class="advice-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Mantenga su hogar limpio y ordenado para mantener la mente clara.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Repare las cosas antes de que se deterioren por completo.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Planifique sus comidas semanales para evitar desperdicios.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Vuelva a la cama temprano y levántese temprano.
+                            </li>
+                        </ul>
+                    </article>
+                    
+                    <article class="advice-category">
+                        <div class="category-header">
+                            <h3><i class="fas fa-briefcase"></i> Para los Negocios</h3>
+                        </div>
+                        <ul class="advice-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Sea puntual en todas sus citas y compromisos.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Mantenga registros detallados de sus transacciones.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Cuidado con los gastos pequeños; un agujero poco profundo hace naufragar un barco.
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Cuidado con tu crédito.
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
 
-        <section id="citas">
-            <h2>Citas Notables</h2>
-            <div class="quote">
-                <p>"La virtud sin habilidad práctica no es suficiente; la habilidad sin virtud no es deseable."</p>
-                <p class="author">- Benjamin Franklin</p>
-            </div>
-            <div class="quote">
-                <p>"La ociosidad es el sepulcro del hombre vivo."</p>
-                <p class="author">- Benjamin Franklin</p>
-            </div>
-            <div class="quote">
-                <p>"Temprano a la cama y temprano levantado, hacen al hombre sano, rico y sabio."</p>
-                <p class="author">- Benjamin Franklin</p>
-            </div>
-        </section>
-    </main>
+            <section id="prediccion" class="content-section" aria-labelledby="prediccion-heading">
+                <div class="section-header">
+                    <h2 id="prediccion-heading">
+                        <i class="fas fa-cloud-sun"></i>
+                        Predicción del Tiempo
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" onclick="updateWeather()">
+                            <i class="fas fa-sync-alt"></i> Actualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="weather-container">
+                    <div class="weather-card">
+                        <div class="weather-icon-large">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="weather-info">
+                            <h3 class="weather-location">Filadelfia, PA</h3>
+                            <div class="weather-details">
+                                <div class="temp">22°C</div>
+                                <div class="condition">Soleado</div>
+                            </div>
+                            <div class="weather-description">
+                                Observación: El cielo despejado en la tarde prevé buen tiempo para mañana.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-advice">
+                        <h4><i class="fas fa-lightbulb"></i> Consejo del día</h4>
+                        <p>Ideal para tender ropa o realizar trabajos al aire libre. También perfecto para leer al aire libre.</p>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        <p>Inspirado en "Poor Richard's Almanack" (Almanaque de Richard el Pobre), publicado por Benjamin Franklin de 1732 a 1758.</p>
-        <p>Diseñado con los principios de sabiduría práctica y conocimiento útil para todos.</p>
-    </footer>
+            <section id="eventos" class="content-section" aria-labelledby="eventos-heading">
+                <div class="section-header">
+                    <h2 id="eventos-heading">
+                        <i class="fas fa-history"></i>
+                        Eventos Históricos
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" onclick="showNextEvent()">
+                            <i class="fas fa-arrow-down"></i> Siguiente
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="timeline-container">
+                    <article class="timeline-event">
+                        <div class="event-date">
+                            <i class="fas fa-calendar"></i>
+                            Enero 23
+                        </div>
+                        <div class="event-content">
+                            <p><strong>1706</strong> - Nacimiento de Benjamin Franklin en Boston, Massachusetts.</p>
+                            <p><strong>1776</strong> - Se publica "Common Sense" de Thomas Paine.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-event">
+                        <div class="event-date">
+                            <i class="fas fa-calendar"></i>
+                            Febrero 22
+                        </div>
+                        <div class="event-content">
+                            <p><strong>1732</strong> - Nacimiento de George Washington.</p>
+                            <p><strong>1788</strong> - Massachusetts ratifica la Constitución de los Estados Unidos.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-event">
+                        <div class="event-date">
+                            <i class="fas fa-calendar"></i>
+                            Abril 30
+                        </div>
+                        <div class="event-content">
+                            <p><strong>1789</strong> - George Washington es investido como primer presidente de los Estados Unidos.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="citas" class="content-section" aria-labelledby="citas-heading">
+                <div class="section-header">
+                    <h2 id="citas-heading">
+                        <i class="fas fa-quote-right"></i>
+                        Citas Notables
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" onclick="randomQuote()">
+                            <i class="fas fa-random"></i> Aleatorio
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="quotes-grid">
+                    <article class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote>
+                            "La virtud sin habilidad práctica no es suficiente; la habilidad sin virtud no es deseable."
+                        </blockquote>
+                        <cite class="author">- Benjamin Franklin</cite>
+                    </article>
+                    
+                    <article class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote>
+                            "La ociosidad es el sepulcro del hombre vivo."
+                        </blockquote>
+                        <cite class="author">- Benjamin Franklin</cite>
+                    </article>
+                    
+                    <article class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote>
+                            "Temprano a la cama y temprano levantado, hacen al hombre sano, rico y sabio."
+                        </blockquote>
+                        <cite class="author">- Benjamin Franklin</cite>
+                    </article>
+                    
+                    <article class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote>
+                            "La inversión en conocimiento paga el mejor interés."
+                        </blockquote>
+                        <cite class="author">- Benjamin Franklin</cite>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-book"></i> Sobre este almanaque</h4>
+                    <p>Inspirado en "Poor Richard's Almanack" (Almanaque de Richard el Pobre), publicado por Benjamin Franklin de 1732 a 1758.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-star"></i> Principios</h4>
+                    <p>Diseñado con los principios de sabiduría práctica y conocimiento útil para todos.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-clock"></i> Inspiración</h4>
+                    <p>"Dile a tu corazón que la adversidad es una bendición, ya que trae con ella la oportunidad de mérito."</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Almanaque de Benjamin Franklin. Hecho con sabiduría y tecnología moderna.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Update current date
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            document.getElementById('dateText').textContent = 
+                now.toLocaleDateString('es-ES', options);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isOpen);
+            navMenu.classList.toggle('active');
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Placeholder functions for interactive elements
+        function shuffleContent(sectionId) {
+            console.log(`Shuffling content for ${sectionId}`);
+            // Add animation effect
+            const container = document.querySelector(`#${sectionId} .entries-grid`);
+            container.style.opacity = '0.5';
+            setTimeout(() => {
+                container.style.opacity = '1';
+            }, 500);
+        }
+
+        function toggleAdviceType() {
+            console.log('Toggling advice type');
+            // Toggle between home and business advice
+            const homeAdvice = document.querySelector('#consejos .advice-category:first-child');
+            const businessAdvice = document.querySelector('#consejos .advice-category:last-child');
+            
+            homeAdvice.classList.toggle('highlighted');
+            businessAdvice.classList.toggle('highlighted');
+        }
+
+        function updateWeather() {
+            console.log('Updating weather');
+            // Simulate weather update
+            const weatherCard = document.querySelector('.weather-card');
+            weatherCard.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                weatherCard.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function showNextEvent() {
+            console.log('Showing next event');
+            // Scroll to next timeline event
+            const events = document.querySelectorAll('.timeline-event');
+            if (events.length > 0) {
+                events[0].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function randomQuote() {
+            console.log('Showing random quote');
+            // Highlight a random quote
+            const quotes = document.querySelectorAll('.quote-card');
+            if (quotes.length > 0) {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                quotes[randomIndex].classList.add('highlighted');
+                setTimeout(() => {
+                    quotes[randomIndex].classList.remove('highlighted');
+                }, 1000);
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentDate();
+            
+            // Set up observer for intersection animations
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections for animations
+            document.querySelectorAll('.content-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
