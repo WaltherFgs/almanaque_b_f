@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almanaque de Benjamin Franklin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="almanaque_styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-book"></i> Almanaque de Benjamin Franklin</h1>
+                <p class="subtitle">Sabiduría para cada día desde el siglo XVIII</p>
+                <p class="date-display" id="currentDate">Cargando fecha...</p>
+            </div>
+        </header>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="showSection('all')">Todas las Secciones</button>
+            <button class="tab-btn" onclick="showSection('reflections')">Reflexiones</button>
+            <button class="tab-btn" onclick="showSection('weather')">Clima</button>
+            <button class="tab-btn" onclick="showSection('advice')">Consejos</button>
+            <button class="tab-btn" onclick="showSection('events')">Eventos Históricos</button>
+            <button class="tab-btn" onclick="showSection('quotes')">Citas Notables</button>
+        </div>
+
+        <div class="content-container" id="contentContainer">
+            <!-- Ventana de Reflexiones -->
+            <div class="window" id="reflections-window">
+                <div class="window-header">
+                    <div class="window-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h2 class="window-title">Reflexiones Diarias</h2>
+                </div>
+                <div class="window-content">
+                    <div class="reflection-item">
+                        <div class="reflection-date">23 de Enero</div>
+                        <p>"La virtud es el gobernante y el maestro de los placeres humanos."</p>
+                    </div>
+                    <div class="reflection-item">
+                        <div class="reflection-date">22 de Enero</div>
+                        <p>"El hombre que tiene paciencia puede lograr lo que sea."</p>
+                    </div>
+                    <div class="reflection-item">
+                        <div class="reflection-date">21 de Enero</div>
+                        <p>"La industria y la perseverancia realizan todas las cosas."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventana de Clima -->
+            <div class="window" id="weather-window">
+                <div class="window-header">
+                    <div class="window-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h2 class="window-title">Predicción del Tiempo</h2>
+                </div>
+                <div class="window-content">
+                    <div class="weather-card">
+                        <div class="weather-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="weather-temp">18°C</div>
+                        <div class="weather-desc">Soleado con brisa ligera</div>
+                    </div>
+                    <p>Observación: El cielo está despejado esta mañana, ideal para comenzar el día con trabajo al aire libre.</p>
+                </div>
+            </div>
+
+            <!-- Ventana de Consejos -->
+            <div class="window" id="advice-window">
+                <div class="window-header">
+                    <div class="window-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2 class="window-title">Consejos Prácticos</h2>
+                </div>
+                <div class="window-content">
+                    <div class="advice-item">
+                        <strong>Salud:</strong> Una caminata matutina fortalece cuerpo y mente.
+                    </div>
+                    <div class="advice-item">
+                        <strong>Economía:</strong> Ahorra una décima parte de tus ingresos y gasta con moderación.
+                    </div>
+                    <div class="advice-item">
+                        <strong>Educación:</strong> Lee al menos una página de un libro útil cada día.
+                    </div>
+                    <div class="advice-item">
+                        <strong>Social:</strong> Sé cortés con todos pero familiar solo con unos pocos.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventana de Eventos Históricos -->
+            <div class="window" id="events-window">
+                <div class="window-header">
+                    <div class="window-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h2 class="window-title">Eventos Históricos</h2>
+                </div>
+                <div class="window-content">
+                    <div class="event-item">
+                        <div class="event-date">23 de Enero, 1776</div>
+                        <p>Thomas Paine publica "Common Sense", influyendo en la independencia americana.</p>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">23 de Enero, 1789</div>
+                        <p>Benjamin Franklin muere en Filadelfia a la edad de 84 años.</p>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">23 de Enero, 1732</div>
+                        <p>Nace Benjamin Franklin en Boston, Massachusetts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventana de Citas Notables -->
+            <div class="window" id="quotes-window">
+                <div class="window-header">
+                    <div class="window-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <h2 class="window-title">Citas Notables</h2>
+                </div>
+                <div class="window-content">
+                    <div class="quote-item">
+                        "La inversión en conocimiento paga el mejor interés."
+                        <span class="quote-author">- Benjamin Franklin</span>
+                    </div>
+                    <div class="quote-item">
+                        "Temer a la muerte es adorarla. Es decirle al verdugo que eres su esclavo."
+                        <span class="quote-author">- Benjamin Franklin</span>
+                    </div>
+                    <div class="quote-item">
+                        "No hay recompensa sin mérito."
+                        <span class="quote-author">- Benjamin Franklin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Inspirado en "Poor Richard's Almanack" - Publicado anualmente por Benjamin Franklin desde 1732 hasta 1758</p>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar la fecha actual
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('es-ES', options).toUpperCase();
+        }
+
+        // Función para manejar las pestañas/secciones
+        function showSection(sectionId) {
+            // Actualizar botones activos
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Mostrar u ocultar ventanas según la sección seleccionada
+            const windows = document.querySelectorAll('.window');
+            
+            if (sectionId === 'all') {
+                windows.forEach(window => {
+                    window.style.display = 'block';
+                    window.classList.remove('hidden');
+                });
+            } else {
+                windows.forEach(window => {
+                    if (window.id === sectionId + '-window') {
+                        window.style.display = 'block';
+                        window.classList.remove('hidden');
+                    } else {
+                        window.style.display = 'none';
+                        window.classList.add('hidden');
+                    }
+                });
+            }
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentDate();
+        });
+    </script>
+</body>
+</html>

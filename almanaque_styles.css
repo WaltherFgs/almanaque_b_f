@@ -1,0 +1,240 @@
+/* Estilos para el Almanaque de Benjamin Franklin */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #f5e9d2 0%, #e8d7b7 100%);
+    color: #3a2c1e;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.header-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 2px solid #d4b88a;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #5d4037;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #795548;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.date-display {
+    font-size: 1.1rem;
+    color: #5d4037;
+    font-weight: bold;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tab-btn {
+    background: #8d6e63;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn:hover {
+    background: #6d4c41;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.tab-btn.active {
+    background: #5d4037;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.window {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid #d4b88a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.window:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.window.hidden {
+    display: none;
+}
+
+.window-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #d4b88a;
+}
+
+.window-icon {
+    margin-right: 15px;
+    font-size: 1.8rem;
+    color: #8d6e63;
+}
+
+.window-title {
+    font-size: 1.8rem;
+    color: #5d4037;
+    font-weight: bold;
+}
+
+.window-content {
+    line-height: 1.6;
+}
+
+.reflection-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff8e1;
+    border-left: 4px solid #ffd54f;
+    border-radius: 0 8px 8px 0;
+}
+
+.reflection-date {
+    font-weight: bold;
+    color: #5d4037;
+    margin-bottom: 5px;
+}
+
+.weather-card {
+    text-align: center;
+    background: #e3f2fd;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #bbdefb;
+}
+
+.weather-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.weather-temp {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.weather-desc {
+    color: #5d4037;
+}
+
+.advice-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    border-left: 4px solid #81c784;
+}
+
+.quote-item {
+    font-style: italic;
+    margin: 15px 0;
+    padding: 15px;
+    background: #f1f8e9;
+    border-radius: 8px;
+    border-left: 4px solid #aed581;
+}
+
+.quote-author {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    color: #5d4037;
+    margin-top: 5px;
+}
+
+.event-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #fce4ec;
+    border-radius: 8px;
+    border-left: 4px solid #f48fb1;
+}
+
+.event-date {
+    font-weight: bold;
+    color: #5d4037;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #795548;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .tabs-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab-btn {
+        width: 80%;
+    }
+}
