@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proverbios - Almanaque de Benjamin Franklin</title>
+    <link rel="stylesheet" href="../almanaque_styles.css">
+</head>
+<body class="window-body">
+    <div class="window-container">
+        <header class="window-header">
+            <h2>Proverbios</h2>
+            <button class="close-btn" onclick="window.close()">&times;</button>
+        </header>
+        
+        <main class="window-content">
+            <div class="quotes-grid">
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "La virtud sin habilidad práctica no es suficiente; la habilidad sin virtud no es deseable."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "La ociosidad es el sepulcro del hombre vivo."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "Temprano a la cama y temprano levantado, hacen al hombre sano, rico y sabio."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "La inversión en conocimiento paga el mejor interés."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "El tiempo es dinero."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "Un centavo ahorrado es un centavo ganado."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "La diligencia es la madre del buen éxito."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+                
+                <article class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "Cuida tu carácter; éste será tu destino."
+                    </blockquote>
+                    <cite class="author">- Benjamin Franklin</cite>
+                </article>
+            </div>
+            
+            <div class="proverb-categories">
+                <h3>Categorías de Proverbios</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <h4><i class="fas fa-wallet"></i> Economía</h4>
+                        <p>Proverbios sobre ahorro, gasto y riqueza</p>
+                    </div>
+                    <div class="category-item">
+                        <h4><i class="fas fa-clock"></i> Tiempo</h4>
+                        <p>Proverbios sobre productividad y uso del tiempo</p>
+                    </div>
+                    <div class="category-item">
+                        <h4><i class="fas fa-heart"></i> Virtud</h4>
+                        <p>Proverbios sobre moral y carácter</p>
+                    </div>
+                    <div class="category-item">
+                        <h4><i class="fas fa-brain"></i> Sabiduría</h4>
+                        <p>Proverbios sobre conocimiento y sabiduría</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        function randomQuote() {
+            const quotes = document.querySelectorAll('.quote-card');
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            
+            // Destacar la cita aleatoria
+            quotes.forEach(quote => quote.classList.remove('highlight'));
+            quotes[randomIndex].classList.add('highlight');
+            
+            setTimeout(() => {
+                quotes[randomIndex].classList.remove('highlight');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

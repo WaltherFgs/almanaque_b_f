@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima y Estaciones - Almanaque de Benjamin Franklin</title>
+    <link rel="stylesheet" href="../almanaque_styles.css">
+</head>
+<body class="window-body">
+    <div class="window-container">
+        <header class="window-header">
+            <h2>Clima y Estaciones</h2>
+            <button class="close-btn" onclick="window.close()">&times;</button>
+        </header>
+        
+        <main class="window-content">
+            <div class="weather-container">
+                <div class="weather-card">
+                    <div class="weather-icon-large">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="weather-info">
+                        <h3 class="weather-location">Filadelfia, PA</h3>
+                        <div class="weather-details">
+                            <div class="temp">22°C</div>
+                            <div class="condition">Soleado</div>
+                        </div>
+                        <div class="weather-description">
+                            Observación: El cielo despejado en la tarde prevé buen tiempo para mañana.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="weather-advice">
+                    <h4><i class="fas fa-lightbulb"></i> Consejo del día</h4>
+                    <p>Ideal para tender ropa o realizar trabajos al aire libre. También perfecto para leer al aire libre.</p>
+                </div>
+                
+                <div class="season-info">
+                    <h3>Estación Actual: Primavera</h3>
+                    <p>Según el Almanaque de Benjamin Franklin, esta es una excelente época para plantar semillas y comenzar nuevos proyectos. Los días más largos y el sol más fuerte indican que es tiempo de actividad y preparación para el verano.</p>
+                    
+                    <h4>Recomendaciones para esta estación:</h4>
+                    <ul>
+                        <li>Mantenga su casa ventilada y fresca</li>
+                        <li>Repase sus herramientas antes de la temporada de trabajo exterior</li>
+                        <li>Prepare su jardín para la siembra</li>
+                        <li>Revise techos y paredes en busca de daños causados por el invierno</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="historical-weather">
+                <h3>Observaciones Históricas</h3>
+                <p>Benjamin Franklin registraba cuidadosamente los patrones climáticos en su almanaque. Sus predicciones se basaban en años de observación del comportamiento de aves, insectos y fenómenos naturales.</p>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        function updateWeather() {
+            // Simular actualización del clima
+            alert("Predicción actualizada según los métodos tradicionales del Almanaque de Benjamin Franklin.");
+        }
+    </script>
+</body>
+</html>
