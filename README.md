@@ -1,40 +1,59 @@
-# Almanaque de Benjamin Franklin
+# AlmanaqueFranklin
 
-Este proyecto es una web tipo almanaque inspirada en los escritos de Benjamin Franklin, especialmente en su famoso "Poor Richard's Almanack".
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
 
-## Características
+## Development server
 
-- Diseño elegante y profesional con estilo histórico
-- Secciones organizadas en ventanas individuales
-- Interfaz interactiva con pestañas para navegar entre secciones
-- Responsive design que se adapta a diferentes dispositivos
-- Iconos y elementos visuales que refuerzan la temática histórica
-- Contenido inspirado en los temas típicos de los almanaques de Franklin
+To start a local development server, run:
 
-## Secciones
+```bash
+ng serve
+```
 
-- **Reflexiones Diarias**: Pensamientos y sabiduría para cada día
-- **Predicción del Tiempo**: Información meteorológica con comentarios históricos
-- **Consejos Prácticos**: Recomendaciones sobre salud, economía, educación y relaciones sociales
-- **Eventos Históricos**: Fechas importantes relacionadas con Benjamin Franklin y su época
-- **Citas Notables**: Frases célebres de Benjamin Franklin y otros pensadores de la época
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Tecnologías Utilizadas
+## Code scaffolding
 
-- HTML5
-- CSS3 (con gradientes, sombras y efectos visuales)
-- JavaScript (para la funcionalidad interactiva)
-- Font Awesome (para los iconos)
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-## Uso
+```bash
+ng generate component component-name
+```
 
-Para utilizar esta web, simplemente abre el archivo `almanaque_moderno.html` en tu navegador web favorito. Puedes navegar entre las diferentes secciones usando las pestañas en la parte superior o ver todas las secciones simultáneamente.
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-## Personalización
+```bash
+ng generate --help
+```
 
-Puedes modificar el contenido en el archivo HTML y los estilos en el archivo CSS para adaptar el almanaque a tus necesidades específicas.
+## Building
 
-## Autor
+To build the project run:
 
-Inspirado en Benjamin Franklin
-Desarrollado con tecnologías web modernas
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

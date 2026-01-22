@@ -1,0 +1,79 @@
+<div class="relative overflow-hidden bg-brand-paper py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <h1 class="text-4xl font-bold tracking-tight text-brand-slate sm:text-6xl font-serif">
+                Almanaque de <span class="text-brand-gold italic">Benjamin Franklin</span>
+            </h1>
+            <p class="mt-6 text-lg leading-8 text-brand-slate/70 font-sans">
+                Sabiduría atemporal, consejos prácticos y reflexiones diarias para una vida plena y productiva.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a routerLink="/reflexiones"
+                    class="rounded-md bg-brand-slate px-6 py-3 text-sm font-semibold text-brand-paper shadow-sm hover:bg-brand-slate/90 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-slate">
+                    Explorar Sabiduría
+                </a>
+                <a routerLink="/consejos"
+                    class="text-sm font-semibold leading-6 text-brand-slate hover:text-brand-gold transition-colors">
+                    Ver Consejos <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Background Element -->
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+        aria-hidden="true">
+        <div
+            class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-brand-gold to-brand-gold-light opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]">
+        </div>
+    </div>
+</div>
+
+<div class="bg-white py-24 sm:py-32 border-t border-brand-gold/10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-x-12">
+            <div class="flex flex-col items-start">
+                <div class="rounded-lg bg-brand-paper p-3 ring-1 ring-brand-gold/20 mb-6">
+                    <svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-serif font-bold text-brand-slate">Reflexiones Diarias</h2>
+                <p class="mt-4 text-base leading-7 text-brand-slate/60">Pensamientos profundos recopilados del almanaque
+                    original para inspirar tu jornada diaria.</p>
+                <a routerLink="/reflexiones" class="mt-6 text-sm font-semibold leading-6 text-brand-gold">Leer más <span
+                        aria-hidden="true">→</span></a>
+            </div>
+            <div class="flex flex-col items-start">
+                <div class="rounded-lg bg-brand-paper p-3 ring-1 ring-brand-gold/20 mb-6">
+                    <svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-serif font-bold text-brand-slate">Consejos Prácticos</h2>
+                <p class="mt-4 text-base leading-7 text-brand-slate/60">Guías útiles sobre finanzas, salud y relaciones
+                    basadas en la experiencia práctica de Franklin.</p>
+                <a routerLink="/consejos" class="mt-6 text-sm font-semibold leading-6 text-brand-gold">Aprender más
+                    <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="flex flex-col items-start">
+                <div class="rounded-lg bg-brand-paper p-3 ring-1 ring-brand-gold/20 mb-6">
+                    <svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-serif font-bold text-brand-slate">Proverbios</h2>
+                <p class="mt-4 text-base leading-7 text-brand-slate/60">Dichos cortos y potentes que resumen grandes
+                    verdades de la vida cotidiana.</p>
+                <a routerLink="/proverbios" class="mt-6 text-sm font-semibold leading-6 text-brand-gold">Explorar <span
+                        aria-hidden="true">→</span></a>
+            </div>
+        </div>
+    </div>
+</div>
